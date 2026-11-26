@@ -6,14 +6,12 @@ import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { useStore } from '../../context/StoreContext';
-import { useNotification } from '../../context/NotificationContext';
 
 export default function Navbar({ showBack = false, backTo = '/', backLabel = 'Back' }) {
   const { cartCount, wishlistCount } = useCart();
   const { user, isAuthenticated, logout } = useAuth();
   const { t } = useLanguage();
   const { storeSettings, storeName } = useStore();
-  const { showNotification } = useNotification();
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,7 +26,6 @@ export default function Navbar({ showBack = false, backTo = '/', backLabel = 'Ba
   const handleConfirmLogout = () => {
     logout();
     setShowSignOutModal(false);
-    showNotification('You have been logged out successfully!', 'success', 2700);
     navigate('/', { replace: true });
   };
 

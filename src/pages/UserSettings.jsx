@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
 import { useStore } from '../context/StoreContext';
-import { useNotification } from '../context/NotificationContext';
 import { authService } from '../services/api';
 import { 
   ArrowLeft, User, Mail, Phone, MapPin, Lock, Globe, Check, Eye, EyeOff, ShieldCheck, LogOut 
@@ -121,11 +120,8 @@ export default function UserSettings() {
     }
   };
 
-  const { showNotification } = useNotification();
-
   const handleLogout = () => {
     logout();
-    showNotification('You have been logged out successfully!', 'success', 2700);
     navigate('/', { replace: true });
   };
 

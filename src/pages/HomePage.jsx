@@ -438,7 +438,6 @@ export default function HomePage() {
                 <button
                   onClick={() => {
                     logout();
-                    showToast('You have been logged out successfully!');
                     navigate('/', { replace: true });
                   }}
                   title="Sign Out"

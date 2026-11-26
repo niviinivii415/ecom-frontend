@@ -3,7 +3,6 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Eye, EyeOff, ArrowLeft, ShieldCheck, CheckCircle2, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useStore } from '../context/StoreContext';
-import { useNotification } from '../context/NotificationContext';
 import '../EthnicEdit.css';
 
 export default function Login() {
@@ -16,7 +15,6 @@ export default function Login() {
 
   const { login, logout, isAuthenticated, isAdmin, user, adminUser } = useAuth();
   const { storeName } = useStore();
-  const { showNotification } = useNotification();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -29,7 +27,6 @@ export default function Login() {
 
   const handleSignOutToHome = () => {
     logout();
-    showNotification('You have been logged out successfully!', 'success', 2700);
     navigate('/', { replace: true });
   };
 

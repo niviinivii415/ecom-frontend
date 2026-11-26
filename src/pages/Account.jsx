@@ -4,7 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useStore } from '../context/StoreContext';
-import { useNotification } from '../context/NotificationContext';
 import { orderService, authService } from '../services/api';
 import { User, Package, MapPin, Phone, Mail, LogOut, ArrowRight, ArrowLeft, Clock, CheckCircle, Eye, X, Truck, CreditCard, Settings, Globe, Download, FileText } from 'lucide-react';
 import { printOrderInvoice } from '../utils/invoiceGenerator';
@@ -66,12 +65,9 @@ export default function Account() {
     setConfirmSignOutOpen(true);
   };
 
-  const { showNotification } = useNotification();
-
   const handleConfirmLogout = () => {
     logout();
     setConfirmSignOutOpen(false);
-    showNotification('You have been logged out successfully!', 'success', 2700);
     navigate('/', { replace: true });
   };
 
