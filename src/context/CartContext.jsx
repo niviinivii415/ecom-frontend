@@ -1,11 +1,22 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { couponService } from '../services/api';
+import { couponService, wishlistApiService } from '../services/api';
+import { useAuth } from './AuthContext';
 
 const CartContext = createContext();
 
 const DEFAULT_ADDRESSES = [];
 
+const getStoredWishlist = () => {
+  try {
+    const stored = localStorage.getItem('tee_wishlist');
+    return stored ? JSON.parse(stored) : [];
+  } catch (e) {
+    return [];
+  }
+};
+
 export const CartProvider = ({ children }) => {
+  const { customerToken } = useAuth();
   const [cartItems, setCartItems] = useState(() => {
     try {
       const stored = localStorage.getItem('tee_cart');
@@ -16,13 +27,9 @@ export const CartProvider = ({ children }) => {
   });
 
   const [wishlistItems, setWishlistItems] = useState(() => {
-    try {
-      const stored = localStorage.getItem('tee_wishlist');
-      return stored ? JSON.parse(stored) : [];
-    } catch (e) {
-      return [];
-    }
+    return customerToken ? [] : getStoredWishlist();
   });
+  const [wishlistSource, setWishlistSource] = useState(customerToken ? 'server' : 'local');
 
   const [recentlyViewed, setRecentlyViewed] = useState(() => {
     try {
@@ -63,14 +70,47 @@ export const CartProvider = ({ children }) => {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  useEffect(() => {
+    let active = true;
+
+    if (!customerToken) {
+      setWishlistSource('local');
+      setWishlistItems(getStoredWishlist());
+      return () => { active = false; };
+    }
+
+    setWishlistSource('server');
+    setWishlistItems([]);
+    wishlistApiService.getWishlist()
+      .then((res) => {
+        if (active && res.success && Array.isArray(res.items)) {
+          setWishlistItems(res.items);
+        }
+      })
+      .catch((err) => {
+        if (active) {
+          window.dispatchEvent(new CustomEvent('tee_toast', {
+            detail: {
+              message: err.message || 'Unable to load your wishlist. Please try again.',
+              type: 'error'
+            }
+          }));
+        }
+      });
+
+    return () => { active = false; };
+  }, [customerToken]);
+
   // Sync with localStorage
   useEffect(() => {
     localStorage.setItem('tee_cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
-    localStorage.setItem('tee_wishlist', JSON.stringify(wishlistItems));
-  }, [wishlistItems]);
+    if (!customerToken && wishlistSource === 'local') {
+      localStorage.setItem('tee_wishlist', JSON.stringify(wishlistItems));
+    }
+  }, [customerToken, wishlistItems, wishlistSource]);
 
   useEffect(() => {
     localStorage.setItem('tee_recently_viewed', JSON.stringify(recentlyViewed));
@@ -155,9 +195,43 @@ export const CartProvider = ({ children }) => {
   };
 
   // Wishlist actions
-  const toggleWishlist = (product) => {
+  const toggleWishlist = async (product) => {
     if (!product || !product.id) return false;
     const exists = wishlistItems.some((item) => item.id === product.id);
+
+    if (customerToken) {
+      try {
+        if (exists) {
+          await wishlistApiService.removeItem(product.id);
+          setWishlistItems((prev) => prev.filter((item) => item.id !== product.id));
+          window.dispatchEvent(new CustomEvent('tee_toast', {
+            detail: { message: `Removed "${product.name}" from your wishlist.` }
+          }));
+          return false;
+        }
+
+        const res = await wishlistApiService.addItem(product.id);
+        if (!res.success || !res.item) {
+          throw new Error(res.message || 'Unable to add this product to your wishlist.');
+        }
+        setWishlistItems((prev) => (
+          prev.some((item) => item.id === product.id) ? prev : [...prev, res.item]
+        ));
+        window.dispatchEvent(new CustomEvent('tee_toast', {
+          detail: { message: `Product "${product.name}" added to your wishlist!` }
+        }));
+        return true;
+      } catch (err) {
+        window.dispatchEvent(new CustomEvent('tee_toast', {
+          detail: {
+            message: err.message || 'Unable to update your wishlist. Please try again.',
+            type: 'error'
+          }
+        }));
+        return false;
+      }
+    }
+
     if (exists) {
       setWishlistItems((prev) => prev.filter((item) => item.id !== product.id));
       window.dispatchEvent(new CustomEvent('tee_toast', { detail: { message: `Removed "${product.name}" from your wishlist.` } }));
@@ -184,7 +258,20 @@ export const CartProvider = ({ children }) => {
     return wishlistItems.some((item) => item.id === productId);
   };
 
-  const removeFromWishlist = (productId) => {
+  const removeFromWishlist = async (productId) => {
+    if (customerToken) {
+      try {
+        await wishlistApiService.removeItem(productId);
+      } catch (err) {
+        window.dispatchEvent(new CustomEvent('tee_toast', {
+          detail: {
+            message: err.message || 'Unable to remove this product from your wishlist.',
+            type: 'error'
+          }
+        }));
+        return;
+      }
+    }
     setWishlistItems((prev) => prev.filter((item) => item.id !== productId));
   };
 

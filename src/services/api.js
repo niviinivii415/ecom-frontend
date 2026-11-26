@@ -56,7 +56,8 @@ api.interceptors.response.use(
       }
     }
     const message = error.response?.data?.error || error.response?.data?.message || error.message || 'An unexpected error occurred';
-    return Promise.reject(new Error(message));
+    error.message = message;
+    return Promise.reject(error);
   }
 );
 
@@ -109,7 +110,14 @@ export const couponService = {
   deleteCoupon: (id) => api.delete(`/coupons/admin/${id}`)
 };
 
-// 6. Banner Services
+// 6. Customer Wishlist Services
+export const wishlistApiService = {
+  getWishlist: () => api.get('/wishlist'),
+  addItem: (productId) => api.post('/wishlist', { product_id: productId }),
+  removeItem: (productId) => api.delete(`/wishlist/${productId}`)
+};
+
+// 7. Banner Services
 export const bannerService = {
   getBanners: () => api.get('/banners'),
   adminGetBanners: () => api.get('/banners/admin/all'),
@@ -118,7 +126,7 @@ export const bannerService = {
   deleteBanner: (id) => api.delete(`/banners/admin/${id}`)
 };
 
-// 7. Admin File Upload & Operations Services
+// 8. Admin File Upload & Operations Services
 export const adminService = {
   uploadSingle: (formData) =>
     api.post('/admin/uploads/single', formData, {
@@ -143,23 +151,23 @@ export const adminService = {
   deleteMedia: (data) => api.post('/admin/uploads/delete', data)
 };
 
-// 8. Analytics Services
+// 9. Analytics Services
 export const analyticsService = {
   getDashboardStats: () => api.get('/admin/dashboard')
 };
 
-// 9. Payment Services (Razorpay & Online Checkout)
+// 10. Payment Services (Razorpay & Online Checkout)
 export const paymentService = {
   createOrder: (data) => api.post('/payments/create-order', data),
   verifyPayment: (data) => api.post('/payments/verify', data)
 };
 
-// 10. Public Store Settings Service (Customer Storefront sync)
+// 11. Public Store Settings Service (Customer Storefront sync)
 export const settingsService = {
   getSettings: () => api.get('/settings')
 };
 
-// 10. Customer Reviews & Feedback Services
+// 12. Customer Reviews & Feedback Services
 export const reviewService = {
   getReviews: (params) => api.get('/reviews', { params }),
   getByProduct: (productId) => api.get(`/reviews/product/${productId}`),
@@ -174,7 +182,7 @@ export const reviewService = {
     })
 };
 
-// 11. Customer Inquiries & Contact Messages
+// 13. Customer Inquiries & Contact Messages
 export const inquiryService = {
   submitInquiry: (data) => api.post('/inquiries', data),
   getInquiries: () => api.get('/inquiries'),
@@ -182,7 +190,7 @@ export const inquiryService = {
   deleteInquiry: (id) => api.delete(`/inquiries/${id}`)
 };
 
-// 12. Notification & Social Tracking Services
+// 14. Notification & Social Tracking Services
 export const notificationService = {
   recordSocialClick: (platform) => api.post('/notifications/social-click', { platform }),
   getAdminNotifications: (params) => api.get('/admin/notifications', { params }),

@@ -14,6 +14,8 @@ export default function OrderSummary({
   onRemoveCoupon,
   items = [],
   showCouponInput = true,
+  showCouponError = true,
+  showCouponSuccessToast = true,
   actionLabel = '',
   onAction = null,
   actionDisabled = false,
@@ -36,7 +38,6 @@ export default function OrderSummary({
     if (!code) {
       const msg = 'Invalid coupon code. Please try again.';
       setInlineError(msg);
-      showNotification(msg, 'error');
       return;
     }
 
@@ -69,16 +70,16 @@ export default function OrderSummary({
         }
         setCouponInput('');
         setInlineError('');
-        showNotification('Coupon applied successfully!', 'success');
+        if (showCouponSuccessToast) {
+          showNotification('Coupon applied successfully!', 'success');
+        }
       } else {
         const msg = res.message || 'Invalid coupon code. Please try again.';
         setInlineError(msg);
-        showNotification(msg, 'error');
       }
     } catch (err) {
       const msg = err.response?.data?.message || err.message || 'Invalid coupon code. Please try again.';
       setInlineError(msg);
-      showNotification(msg, 'error');
     } finally {
       setApplying(false);
     }
@@ -161,7 +162,7 @@ export default function OrderSummary({
               <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Tag size={13} />
                 <span>
-                  Coupon <b>{appliedCoupon.code}</b> applied (-{inr(discountAmount)})
+                  Coupon applied successfully! <b>{appliedCoupon.code}</b> (-{inr(discountAmount)})
                 </span>
               </span>
               {onRemoveCoupon && (
@@ -189,7 +190,7 @@ export default function OrderSummary({
             </div>
           )}
 
-          {inlineError && (
+          {showCouponError && inlineError && (
             <div style={{ fontSize: '12px', color: '#f87171', lineHeight: 1.4 }}>
               {inlineError}
             </div>

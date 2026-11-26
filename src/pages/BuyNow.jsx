@@ -888,6 +888,7 @@ export default function BuyNow() {
               }}
               items={buyNowItems}
               showCouponInput={true}
+              showCouponSuccessToast={false}
               actionLabel="Continue to Payment →"
               onAction={handleProceedToPayment}
               footerNote="Encrypted 256-bit Bank Grade Security"
@@ -1008,6 +1009,7 @@ export default function BuyNow() {
               }}
               items={buyNowItems}
               showCouponInput={true}
+              showCouponSuccessToast={false}
               actionLabel={
                 isPlacingOrder
                   ? 'Connecting to Gateway...'

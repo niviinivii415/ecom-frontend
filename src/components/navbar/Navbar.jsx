@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Heart, ShoppingBag, User, LogOut, Settings, Menu, X, ArrowLeft } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
@@ -355,7 +356,7 @@ export default function Navbar({ showBack = false, backTo = '/', backLabel = 'Ba
       )}
 
       {/* Sign Out Confirmation Modal */}
-      {showSignOutModal && (
+      {showSignOutModal && createPortal(
         <div
           style={{
             position: 'fixed',
@@ -443,7 +444,8 @@ export default function Navbar({ showBack = false, backTo = '/', backLabel = 'Ba
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

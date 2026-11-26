@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { CheckCircle2, AlertCircle, Info, X } from 'lucide-react';
 
 const NotificationContext = createContext();
@@ -56,7 +57,7 @@ export const NotificationProvider = ({ children }) => {
       {children}
 
       {notification && (
-        <div
+        createPortal(<div
           role="status"
           aria-live="polite"
           className="global-center-toast-wrapper"
@@ -156,7 +157,7 @@ export const NotificationProvider = ({ children }) => {
               <X size={16} />
             </button>
           </div>
-        </div>
+        </div>, document.body)
       )}
     </NotificationContext.Provider>
   );
