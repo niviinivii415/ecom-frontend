@@ -1054,12 +1054,6 @@ select:-webkit-autofill:focus {
 @media (max-width: 480px) {
   .customer-login-page {
     padding: 16px !important;
-    min-height: 100vh !important;
-    min-height: 100svh !important;
-  }
-
-  .customer-login-page input {
-    font-size: 16px !important;
   }
 
   .customer-login-card {
