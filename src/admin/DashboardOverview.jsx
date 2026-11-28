@@ -172,7 +172,7 @@ export default function DashboardOverview({ onNavigate, onBack }) {
       </div>
 
       {/* Charts Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '24px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: '24px' }}>
         {/* Revenue Trend Area Chart */}
         <div style={{ background: '#1c0418', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px' }}>
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '20px', color: 'var(--gold2)', marginBottom: '16px', fontWeight: 500 }}>
@@ -265,7 +265,7 @@ export default function DashboardOverview({ onNavigate, onBack }) {
       </div>
 
       {/* Recent Orders & Best Sellers Row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '24px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: '24px' }}>
         {/* Recent Orders Table */}
         <div style={{ background: '#1c0418', border: '1px solid var(--line)', borderRadius: '16px', padding: '24px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>

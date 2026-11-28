@@ -544,7 +544,7 @@ export default function HomePage() {
             }}
           >
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(20,2,16,0.92) 0%, rgba(20,2,16,0.5) 60%, rgba(20,2,16,0.1) 100%)' }} />
-            <div style={{ position: 'relative', padding: '0 48px', maxWidth: '620px' }}>
+            <div className="customer-home-hero-copy" style={{ position: 'relative', padding: '0 48px', maxWidth: '620px' }}>
               <div className="kick" style={{ color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '8px' }}>
                 Festive Bridal Collection 2026
               </div>
@@ -577,7 +577,7 @@ export default function HomePage() {
             }}
           >
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(20,2,16,0.92) 0%, rgba(20,2,16,0.5) 60%, rgba(20,2,16,0.1) 100%)' }} />
-            <div style={{ position: 'relative', padding: '0 48px', maxWidth: '620px' }}>
+            <div className="customer-home-hero-copy" style={{ position: 'relative', padding: '0 48px', maxWidth: '620px' }}>
               <div className="kick" style={{ color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '8px' }}>
                 Deal of the Day · Up to 25% Off
               </div>
@@ -617,7 +617,7 @@ export default function HomePage() {
             }}
           >
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(20,2,16,0.92) 0%, rgba(20,2,16,0.5) 60%, rgba(20,2,16,0.1) 100%)' }} />
-            <div style={{ position: 'relative', padding: '0 48px', maxWidth: '620px' }}>
+            <div className="customer-home-hero-copy" style={{ position: 'relative', padding: '0 48px', maxWidth: '620px' }}>
               <div className="kick" style={{ color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '8px' }}>
                 Festive Gifting Specials
               </div>

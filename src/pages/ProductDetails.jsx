@@ -1089,7 +1089,7 @@ export default function ProductDetails() {
             Product Specifications
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '20px' }}>
             {[
               { label: 'Category', value: product.category?.name || 'Jewellery' },
               { label: 'Style / Collection', value: product.jewellery_type || 'Temple Imitation' },

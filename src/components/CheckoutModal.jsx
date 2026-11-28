@@ -179,7 +179,7 @@ export default function CheckoutModal({ isOpen, onClose, onOrderSuccess }) {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '24px' }}>
           {/* Customer Details */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <h4 style={{ color: 'var(--gold)', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.12em', borderBottom: '1px solid var(--line)', paddingBottom: '6px' }}>
@@ -198,7 +198,7 @@ export default function CheckoutModal({ isOpen, onClose, onOrderSuccess }) {
               />
             </label>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '10px' }}>
               <label className="f" style={{ border: 0, padding: 0, background: 'none' }}>
                 <span style={{ fontSize: '12px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Email *</span>
                 <input
@@ -239,7 +239,7 @@ export default function CheckoutModal({ isOpen, onClose, onOrderSuccess }) {
               />
             </label>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '10px' }}>
               <label className="f" style={{ border: 0, padding: 0, background: 'none' }}>
                 <span style={{ fontSize: '12px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>City *</span>
                 <input

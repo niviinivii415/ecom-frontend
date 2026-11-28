@@ -69,7 +69,7 @@ export default function ProductDetailModal({ product, onClose, onShowToast }) {
           ×
         </button>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '28px', alignItems: 'start' }}>
           {/* Gallery View */}
           <div>
             <div

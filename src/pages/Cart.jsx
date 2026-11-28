@@ -106,7 +106,7 @@ export default function Cart() {
             </Link>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '32px', alignItems: 'start' }}>
             {/* Items List */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {cartItems.map((item) => {
@@ -117,6 +117,7 @@ export default function Cart() {
                 return (
                   <div
                     key={item.id}
+                    className="cart-item"
                     style={{
                       background: 'linear-gradient(160deg, #320726, #200318)',
                       border: '1px solid var(--line)',
@@ -140,14 +141,14 @@ export default function Cart() {
                         border: '1px solid var(--line)'
                       }}
                     />
-                    <div style={{ flex: 1 }}>
+                    <div className="cart-item-details" style={{ flex: 1 }}>
                       <h3 style={{ margin: '0 0 4px', fontSize: '16px', fontFamily: '"Cormorant Garamond", serif', color: 'var(--gold2)' }}>
                         {item.name}
                       </h3>
                       <div style={{ fontSize: '14px', fontWeight: 600, color: '#fff', marginBottom: '10px' }}>
                         {inr(item.price)}
                       </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div className="cart-item-actions" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <div style={{ display: 'inline-flex', alignItems: 'center', background: 'rgba(255,240,208,0.06)', border: '1px solid var(--line)', borderRadius: '8px' }}>
                           <button
                             onClick={() => updateQuantity(item.id, -1)}
@@ -171,7 +172,7 @@ export default function Cart() {
                         </button>
                       </div>
                     </div>
-                    <div style={{ textAlign: 'right', fontWeight: 600, fontSize: '16px', color: 'var(--gold2)' }}>
+                    <div className="cart-item-price" style={{ textAlign: 'right', fontWeight: 600, fontSize: '16px', color: 'var(--gold2)' }}>
                       {inr(item.price * item.quantity)}
                     </div>
                   </div>

@@ -1049,6 +1049,13 @@ select:-webkit-autofill:focus {
   .customer-home-testimonials-grid {
     grid-template-columns: minmax(0, 1fr) !important;
   }
+
+  .customer-home-hero-copy {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    padding: 0 20px !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1056,11 +1063,31 @@ select:-webkit-autofill:focus {
     padding: 16px !important;
   }
 
-  .customer-login-page input:focus {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):focus,
+  textarea:focus,
+  select:focus {
     font-size: 16px !important;
   }
 
   .customer-login-card {
     padding: 32px 20px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .cart-item-details {
+    min-width: 0;
+  }
+
+  .cart-item-actions {
+    flex-wrap: wrap;
+  }
+
+  .cart-item-price {
+    flex: 1 1 100%;
   }
 }
