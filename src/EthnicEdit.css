@@ -1126,6 +1126,10 @@ select:-webkit-autofill:focus {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
+  .admin-layout-root .ov.on > .box {
+    min-width: 0;
+  }
+
   .admin-layout-root [style*="minmax(240px"],
   .admin-layout-root [style*="minmax(260px"] {
     grid-template-columns: minmax(0, 1fr) !important;
