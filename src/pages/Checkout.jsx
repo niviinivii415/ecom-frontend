@@ -356,7 +356,7 @@ export default function Checkout() {
           </div>
         )}
 
-        <form onSubmit={handlePlaceOrder} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
+        <form className="checkout-form" onSubmit={handlePlaceOrder} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
           {/* Shipping & Payment Details */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {/* Shipping Address Section */}

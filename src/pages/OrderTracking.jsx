@@ -162,7 +162,7 @@ export default function OrderTracking({ initialOrderNumber, onClose }) {
       </p>
 
       {/* Search Bar */}
-      <form onSubmit={handleSearch} style={{ display: 'flex', gap: '10px', marginBottom: '28px' }}>
+      <form className="order-tracking-search" onSubmit={handleSearch} style={{ display: 'flex', gap: '10px', marginBottom: '28px' }}>
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}

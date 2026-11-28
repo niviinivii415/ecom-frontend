@@ -545,7 +545,7 @@ export default function BuyNow() {
 
         {/* STEP 1: CONFIRM PRODUCT */}
         {currentStep === 1 && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
+          <div className="buy-now-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
             {/* Left: Product Details Card */}
             <div style={{ background: 'linear-gradient(160deg, #320726, #200318)', border: '1px solid var(--line)', borderRadius: '22px', padding: '24px' }}>
               <div style={{ display: 'flex', gap: '20px', alignItems: 'center', borderBottom: '1px solid var(--line)', paddingBottom: '20px', marginBottom: '20px' }}>
@@ -649,7 +649,7 @@ export default function BuyNow() {
 
         {/* STEP 2: DELIVERY ADDRESS FORM */}
         {currentStep === 2 && (
-          <div style={{ maxWidth: '720px', margin: '0 auto', background: 'linear-gradient(160deg, #320726, #200318)', border: '1px solid var(--line)', borderRadius: '24px', padding: '32px' }}>
+          <div className="buy-now-address" style={{ maxWidth: '720px', margin: '0 auto', background: 'linear-gradient(160deg, #320726, #200318)', border: '1px solid var(--line)', borderRadius: '24px', padding: '32px' }}>
             <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '24px', color: 'var(--gold2)', margin: '0 0 8px' }}>
               Delivery Address
             </h2>
@@ -813,7 +813,7 @@ export default function BuyNow() {
 
         {/* STEP 3: ORDER REVIEW & SUMMARY */}
         {currentStep === 3 && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
+          <div className="buy-now-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {/* Delivery Address Card */}
               <div style={{ background: 'linear-gradient(160deg, #320726, #200318)', border: '1px solid var(--line)', borderRadius: '20px', padding: '24px' }}>
@@ -898,7 +898,7 @@ export default function BuyNow() {
 
         {/* STEP 4: PAYMENT PAGE */}
         {currentStep === 4 && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
+          <div className="buy-now-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
             {/* Left: Payment Options */}
             <div style={{ background: 'linear-gradient(160deg, #320726, #200318)', border: '1px solid var(--line)', borderRadius: '24px', padding: '28px' }}>
               <h2 style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '24px', color: 'var(--gold2)', margin: '0 0 18px' }}>

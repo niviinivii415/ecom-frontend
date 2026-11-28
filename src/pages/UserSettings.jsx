@@ -165,7 +165,7 @@ export default function UserSettings() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gap: '28px' }}>
+        <div className="settings-sections" style={{ display: 'grid', gap: '28px' }}>
           {/* SECTION 1: LANGUAGE PREFERENCE */}
           <section
             style={{
