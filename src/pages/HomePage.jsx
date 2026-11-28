@@ -245,7 +245,7 @@ export default function HomePage() {
       </div>
 
       {/* 2. STICKY HEADER & SEARCH BAR */}
-      <header className="nav sc" style={{ position: 'sticky', top: 0, zIndex: 100, padding: '12px 24px', background: 'rgba(20,2,16,0.96)', borderBottom: '1px solid var(--line)', backdropFilter: 'blur(10px)' }}>
+      <header className="nav sc customer-home-nav" style={{ position: 'sticky', top: 0, zIndex: 100, padding: '12px 24px', background: 'rgba(20,2,16,0.96)', borderBottom: '1px solid var(--line)', backdropFilter: 'blur(10px)' }}>
         <div style={{ maxWidth: '1440px', width: '100%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
           {/* Logo */}
           <Link className="brand" to="/" style={{ margin: 0, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -889,8 +889,8 @@ export default function HomePage() {
       </section>
 
       {/* 8. CUSTOMER REVIEWS & TESTIMONIALS */}
-      <section style={{ maxWidth: '1440px', width: '100%', margin: '40px auto 0', padding: '0 20px', boxSizing: 'border-box' }}>
-        <div style={{ background: 'linear-gradient(160deg, #28051f, #180213)', border: '1px solid var(--line)', borderRadius: '24px', padding: '40px 32px' }}>
+      <section className="customer-home-testimonials" style={{ maxWidth: '1440px', width: '100%', margin: '40px auto 0', padding: '0 20px', boxSizing: 'border-box' }}>
+        <div className="customer-home-testimonials-panel" style={{ background: 'linear-gradient(160deg, #28051f, #180213)', border: '1px solid var(--line)', borderRadius: '24px', padding: '40px 32px' }}>
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
             <div className="kick" style={{ color: 'var(--gold)', fontSize: '12px', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
               Patron Testimonials
@@ -900,7 +900,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+          <div className="customer-home-testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
             {[
               {
                 name: 'Kavitha Ramachandran',
@@ -1007,9 +1007,17 @@ export default function HomePage() {
               Single-vendor flagship online portal for premium imitation jewellery, handcrafted temple chokers, antique gold kadas, and Basra pearl earrings.
             </p>
             <div style={{ display: 'flex', gap: '12px', color: 'var(--gold)' }}>
-              <Instagram size={18} style={{ cursor: 'pointer' }} />
-              <Facebook size={18} style={{ cursor: 'pointer' }} />
-              <Twitter size={18} style={{ cursor: 'pointer' }} />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ cursor: 'pointer' }} aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ cursor: 'pointer' }} aria-hidden="true">
+                <path d="M22 12a10 10 0 1 0-11.6 9.88v-6.99H8.08v-2.89h2.32V9.8c0-2.29 1.36-3.56 3.45-3.56.99 0 2.02.18 2.02.18v2.22h-1.14c-1.12 0-1.47.7-1.47 1.42V12h2.5l-.4 2.89h-2.1v6.99A10 10 0 0 0 22 12Z" />
+              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ cursor: 'pointer' }} aria-hidden="true">
+                <path d="M23.954 4.57a10 10 0 0 1-2.825.775 4.932 4.932 0 0 0 2.163-2.723 9.99 9.99 0 0 1-3.127 1.195 4.916 4.916 0 0 0-8.384 4.482 13.94 13.94 0 0 1-10.12-5.13 4.916 4.916 0 0 0 1.523 6.56 4.902 4.902 0 0 1-2.228-.616v.06a4.918 4.918 0 0 0 3.946 4.816 4.94 4.94 0 0 1-2.224.084 4.926 4.926 0 0 0 4.6 3.42A9.87 9.87 0 0 1 .98 19.54a13.93 13.93 0 0 0 7.55 2.212c9.054 0 14.01-7.503 14.01-14.01 0-.213-.005-.425-.014-.636A10.012 10.012 0 0 0 24 4.59l-.046-.02Z" />
+              </svg>
             </div>
           </div>
 

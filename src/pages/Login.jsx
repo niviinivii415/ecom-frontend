@@ -83,6 +83,7 @@ export default function Login() {
 
   return (
     <div
+      className="customer-login-page"
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -141,6 +142,7 @@ export default function Login() {
       </div>
 
       <div
+        className="customer-login-card"
         style={{
           width: '100%',
           maxWidth: '460px',

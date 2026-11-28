@@ -1003,4 +1003,60 @@ select:-webkit-autofill:focus {
   .buy-now-grid {
     grid-template-columns: minmax(0, 1fr) !important;
   }
+
+  .customer-home-nav {
+    padding: 12px !important;
+  }
+
+  .customer-home-nav > div {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .nav.customer-home-nav > div > a.brand {
+    display: flex !important;
+    min-width: 0;
+  }
+
+  .customer-home-nav > div > :nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .customer-home-nav > div > :nth-child(3) {
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px !important;
+  }
+
+  .customer-home-nav > div > :nth-child(3) > div {
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  .customer-home-testimonials-panel {
+    padding: 24px 16px !important;
+  }
+
+  .customer-home-testimonials-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-login-page {
+    padding: 16px !important;
+  }
+
+  .customer-login-card {
+    padding: 32px 20px !important;
+  }
 }
